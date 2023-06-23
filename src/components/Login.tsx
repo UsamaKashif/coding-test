@@ -19,7 +19,8 @@ const Login = () => {
       });
   }
   return (
-    <div className='w-screen h-screen flex items-center justify-center'>
+    <div className='w-screen h-screen flex flex-col items-center justify-center'>
+      <h1 className='mb-6 font-bold text-2xl'>ToDo App</h1>
       <button onClick={handleLogin} className='text-white bg-black rounded-md py-4 px-6'>Sign in with Google</button>
     </div>
   )
