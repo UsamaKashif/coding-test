@@ -2,7 +2,7 @@ import { auth } from '@/firebaseConfig';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React from 'react'
 
-const Login = () => {
+const Login = ({authChecking}: {authChecking:boolean}) => {
   const handleLogin = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -21,7 +21,7 @@ const Login = () => {
   return (
     <div className='w-screen h-screen flex flex-col items-center justify-center'>
       <h1 className='mb-6 font-bold text-2xl'>ToDo App</h1>
-      <button onClick={handleLogin} className='text-white bg-black rounded-md py-4 px-6'>Sign in with Google</button>
+      <button disabled={authChecking} onClick={handleLogin} className='text-white disabled:bg-opacity-80 disabled:cursor-not-allowed bg-black rounded-md py-4 px-6'>Sign in with Google</button>
     </div>
   )
 }

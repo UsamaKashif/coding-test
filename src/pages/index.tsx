@@ -10,7 +10,7 @@ import TodoForm from '@/components/HomePage/TodoForm'
 import Loading from '@/components/Loading'
 import Todos from '@/components/HomePage/Todos'
 
-export default function Home({ user }: { user: User }) {
+export default function Home({ user, authChecking }: { user: User, authChecking: boolean }) {
   const [todo, setTodo] = useState<string>('')
   const [todos, setTodos] = useState<TodoModel[]>([])
   const [adding, setAdding] = useState<boolean>(false)
@@ -73,6 +73,7 @@ export default function Home({ user }: { user: User }) {
     }
   }, [user])
 
+
   return (
     <>
       <Head>
@@ -82,7 +83,7 @@ export default function Home({ user }: { user: User }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {
-        !user ? <Login /> : (
+        !user ? <Login authChecking={authChecking} /> : (
           <main className='max-w-lg mx-auto px-4'>
             <Header user={user} />
             <TodoForm
